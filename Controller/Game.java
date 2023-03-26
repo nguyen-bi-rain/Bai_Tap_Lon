@@ -1,4 +1,4 @@
-package Bai_Tap_Lon.Controller;
+package Controller;
 
 public class Game {
     

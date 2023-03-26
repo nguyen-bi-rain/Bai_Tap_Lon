@@ -1,4 +1,4 @@
-package Bai_Tap_Lon.model;
+package model;
 
 public class test {
     
