@@ -1,74 +1,111 @@
 package view;
 
+import java.awt.CheckboxGroup;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import javax.swing.ButtonGroup;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JRadioButton;
 
 public class BoarView extends JFrame implements ActionListener {
+    private final static int WIDTH = 660;
+    private final static int HEIGHT = 500;
 
     private JLabel gameName;
-    private JButton map1;
-    private JButton map2;
-    private JButton map3;
+    private JRadioButton map1;
+    private JRadioButton map2;
+    private JRadioButton map3;
+    private JButton startButton;
+    private ButtonGroup group;
     private JLabel request;
-    public BoarView(){
+    private JLabel mapSelected;
 
+    public BoarView() {
 
         gameName = new JLabel();
-        map1 = new JButton();
-        map2 = new JButton();
-        map3 = new JButton();
+        map1 = new JRadioButton("map1", true);
+        map2 = new JRadioButton();
+        map3 = new JRadioButton();
+        group = new ButtonGroup();
+        mapSelected = new JLabel("Seleted map: ");
         request = new JLabel("Please Choose your map");
+        startButton = new JButton("start game");
+        startButton.setBounds(300, 400, 50, 50);
 
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLayout(null);
-        setMaximumSize(new Dimension(660,500));
-        setMinimumSize(new Dimension(660,500));
-        setPreferredSize(new Dimension(660,500));
-        
+        setMaximumSize(new Dimension(WIDTH, HEIGHT));
+        setMinimumSize(new Dimension(WIDTH, HEIGHT));
+        setPreferredSize(new Dimension(WIDTH, HEIGHT));
+
         getContentPane().setBackground(new Color(83, 145, 101));
 
-        gameName.setFont(new Font("Tahoma", Font.BOLD,30 ));
+        group.add(map1);
+        group.add(map2);
+        group.add(map3);
+        gameName.setFont(new Font("Tahoma", Font.BOLD, 30));
         gameName.setText("CROSS GAME");
         gameName.setForeground(Color.WHITE);
-        gameName.setBounds(230,20,300,100);
+        gameName.setBounds(230, 20, 300, 100);
 
         map1.setName("map1");
-        map1.setBounds(50,150,125,125);
-        map1.setBorderPainted(false);
+        map1.setBounds(50, 150, 125, 125);
         map1.setIcon(new ImageIcon(getClass().getResource("../images/map1.png")));
         map1.setBackground(Color.GREEN);
 
         map2.setName("map2");
-        map2.setBounds(275,150,125,125);
-        map2.setBorderPainted(false);
+        map2.setBounds(275, 150, 125, 125);
         map2.setIcon(new ImageIcon(getClass().getResource("../images/map2.png")));
 
         map3.setName("map");
-        map3.setBounds(500,150,125,125);
-        map3.setBorderPainted(false);
+        map3.setBounds(500, 150, 125, 125);
         map3.setIcon(new ImageIcon(getClass().getResource("../images/map.png")));
 
         request.setFont(new Font("Tohama", Font.BOLD, 25));
-        request.setBounds(180,250,400,200);
+        request.setBounds(180, 30, 400, 200);
         request.setForeground(Color.PINK);
 
+        mapSelected.setFont(new Font("Tohama", Font.BOLD, 25));
+        mapSelected.setBounds(180, 250, 400, 200);
+        mapSelected.setForeground(Color.PINK);
 
         map1.addActionListener(this);
         map2.addActionListener(this);
         map3.addActionListener(this);
+        startButton.addActionListener(new ActionListener() {
+
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if (map1.isSelected()) {
+                    dispose();
+                    new MapView(map1.getName());
+                } else if (map3.isSelected()) {
+                    dispose();
+                    new MapView(map2.getName());
+                } else if (map3.isSelected()) {
+                    dispose();
+                    new MapView(map3.getName());
+                } else {
+
+                    throw new UnsupportedOperationException("Unimplemented method 'actionPerformed'");
+                }
+            }
+
+        });
+        add(mapSelected);
         add(request);
         add(map1);
         add(map2);
         add(map3);
         add(gameName);
+        add(startButton);
         setResizable(false);
         setLocationRelativeTo(null);
         pack();
@@ -81,17 +118,14 @@ public class BoarView extends JFrame implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        if(e.getSource() == map1){
-            dispose();
-            MapView game = new MapView("");
+        if (map1.isSelected()) {
+            mapSelected.setText("map 1 is selected");
         }
-        if(e.getSource() == map2 ){
-            dispose();
-            MapView game = new MapView("");
+        if (map2.isSelected()) {
+            mapSelected.setText("map 2 is selected");
         }
-        if(e.getSource() == map3 ){
-            dispose();
-            MapView game = new MapView(map3.getName());
+        if (map3.isSelected()) {
+            mapSelected.setText("map 3 is selected");
         }
     }
 }
