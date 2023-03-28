@@ -9,7 +9,7 @@ public class MapView extends JFrame{
     private JLabel label;
     private JLabel map;
     private JLabel hero;
-    public MapView(String map1){
+    public MapView(String map1,String cat){
         hero = new JLabel();
         label = new JLabel("Hello");
         map = new JLabel();
@@ -23,7 +23,7 @@ public class MapView extends JFrame{
         map.setBounds(0,0,660,500);
         map.setIcon(new ImageIcon(getClass().getResource("../images/"+map1+".png")));
 
-        hero.setIcon(new ImageIcon(getClass().getResource("../images/"+map1+".png")));
+        hero.setIcon(new ImageIcon(getClass().getResource("../images/"+cat+".png")));
         hero.setBounds(400,240,100,100);
 
         add(label);
@@ -34,8 +34,6 @@ public class MapView extends JFrame{
         setResizable(false);
         setVisible(true);
     }
-    public static void main(String[] args) {
-        // MapView map = new MapView("map");
-    }
+
 }
 
