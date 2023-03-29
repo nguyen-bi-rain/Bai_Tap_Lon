@@ -1,9 +1,11 @@
 package view;
 
+import java.awt.Color;
 import java.awt.Dimension;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import  utils.contants;
 
 public class MapView extends JFrame{
     private JLabel label;
@@ -11,29 +13,30 @@ public class MapView extends JFrame{
     private JLabel hero;
     public MapView(String map1,String cat){
         hero = new JLabel();
-        label = new JLabel("Hello");
         map = new JLabel();
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setSize(660,500);
-        label.setBounds(100,100,100,100);
+        setSize(contants.WIDTH,contants.HEIGHT);
+
+
         map.setName("map");
-        map.setMaximumSize(new Dimension(660,500));
-        map.setMinimumSize(new Dimension(660,500));
-        map.setPreferredSize(new Dimension(660,500));
-        map.setBounds(0,0,660,500);
-        map.setIcon(new ImageIcon(getClass().getResource("../images/"+map1+".png")));
+        map.setMaximumSize(new Dimension(contants.WIDTH,contants.HEIGHT));
+        map.setMinimumSize(new Dimension(contants.WIDTH,contants.HEIGHT));
+        map.setPreferredSize(new Dimension(contants.WIDTH,contants.HEIGHT));
 
+        map.setIcon(new ImageIcon(getClass().getResource("../images/Street.png")));
+        map.setBounds(0,0,map.getIcon().getIconWidth(),map.getIcon().getIconHeight());
         hero.setIcon(new ImageIcon(getClass().getResource("../images/"+cat+".png")));
-        hero.setBounds(400,240,100,100);
-
-        add(label);
-        add(map);
+        hero.setBounds(500,550,100,100);
+        hero.setBackground(Color.BLACK);
         add(hero);
+        add(map);
         setLocationRelativeTo(null);
         setLayout(null);
-        setResizable(false);
+        setResizable(true);
         setVisible(true);
     }
-
+    public static void main(String[] args) {
+        new MapView(null, "mouse");
+    }
 }
 
