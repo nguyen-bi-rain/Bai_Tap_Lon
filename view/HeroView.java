@@ -22,6 +22,7 @@ public class HeroView extends JFrame implements ActionListener {
     private JLabel gameName;
     private JRadioButton map1;
     private JRadioButton map2;
+    private JRadioButton map3;
     private JButton startButton;
     private ButtonGroup group;
     private JLabel mapSelected;
@@ -31,6 +32,7 @@ public class HeroView extends JFrame implements ActionListener {
         gameName = new JLabel();
         map1 = new JRadioButton("map1", true);
         map2 = new JRadioButton();
+        map3 = new JRadioButton();
         group = new ButtonGroup();
         mapSelected = new JLabel("Ban dang chon nhan nhan vat 1");
         startButton = new JButton("start game");
@@ -51,14 +53,18 @@ public class HeroView extends JFrame implements ActionListener {
         gameName.setForeground(Color.WHITE);
         gameName.setBounds(400, 20, 300, 100);
 
-        map1.setName("map1");
+        map1.setName("mouse");
         map1.setSelected(true);
-        map1.setIcon(new ImageIcon(getClass().getResource("../images/streethome.png")));
-        map1.setBounds(200, 130, map1.getIcon().getIconWidth(), map1.getIcon().getIconHeight());
+        map1.setIcon(new ImageIcon(getClass().getResource("../images/homemouse.png")));
+        map1.setBounds(130, 130, map1.getIcon().getIconWidth(), map1.getIcon().getIconHeight());
 
-        map2.setName("map2");
-        map2.setIcon(new ImageIcon(getClass().getResource("../images/streethome.png")));
-        map2.setBounds(580, 130, map2.getIcon().getIconWidth(), map2.getIcon().getIconHeight());
+        map2.setName("cat");
+        map2.setIcon(new ImageIcon(getClass().getResource("../images/homecat.png")));
+        map2.setBounds(430, 130, map2.getIcon().getIconWidth(), map2.getIcon().getIconHeight());
+
+        map3.setName("dog");
+        map3.setIcon(new ImageIcon(getClass().getResource("../images/homedog.png")));
+        map3.setBounds(730, 130, map3.getIcon().getIconWidth(), map3.getIcon().getIconHeight());
 
         mapSelected.setFont(new Font("Tohama", Font.BOLD, 25));
         mapSelected.setBounds(300, 300, 400, 200);
@@ -69,6 +75,7 @@ public class HeroView extends JFrame implements ActionListener {
 
         map1.addActionListener(this);
         map2.addActionListener(this);
+        map3.addActionListener(this);
         startButton.addActionListener(new ActionListener() {
 
             @Override
@@ -79,6 +86,9 @@ public class HeroView extends JFrame implements ActionListener {
                 } else if (map2.isSelected()) {
                     dispose();
                     new MapView(map,map2.getName());
+                }else if (map3.isSelected()) {
+                    dispose();
+                    new MapView(map,map3.getName());
                 } else {
 
                     throw new UnsupportedOperationException("Unimplemented method 'actionPerformed'");
@@ -89,6 +99,7 @@ public class HeroView extends JFrame implements ActionListener {
         add(mapSelected);
         add(map1);
         add(map2);
+        add(map3);
         add(gameName);
         add(startButton);
         setResizable(false);
@@ -108,6 +119,9 @@ public class HeroView extends JFrame implements ActionListener {
         }
         if (map2.isSelected()) {
             mapSelected.setText("map 2 is selected");
+        }
+        if (map3.isSelected()) {
+            mapSelected.setText("map 4 is selected");
         }
     }
 }

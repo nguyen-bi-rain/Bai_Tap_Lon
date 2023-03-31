@@ -1,6 +1,5 @@
 package view;
 
-import java.awt.CheckboxGroup;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
@@ -49,13 +48,13 @@ public class BoarView extends JFrame implements ActionListener {
         gameName.setForeground(Color.WHITE);
         gameName.setBounds(400, 20, 300, 100);
 
-        map1.setName("map1");
+        map1.setName("Street");
         map1.setSelected(true);
         map1.setIcon(new ImageIcon(getClass().getResource("../images/streethome.png")));
         map1.setBounds(200, 130, map1.getIcon().getIconWidth(), map1.getIcon().getIconHeight());
 
-        map2.setName("map2");
-        map2.setIcon(new ImageIcon(getClass().getResource("../images/streethome.png")));
+        map2.setName("Mountain");
+        map2.setIcon(new ImageIcon(getClass().getResource("../images/moutainhome.png")));
         map2.setBounds(580, 130, map2.getIcon().getIconWidth(), map2.getIcon().getIconHeight());
 
         mapSelected.setFont(new Font("Tohama", Font.BOLD, 25));
@@ -66,6 +65,7 @@ public class BoarView extends JFrame implements ActionListener {
         map2.addActionListener(this);
 
         startButton.setBounds(400, 450, 200, 100);
+
         startButton.addActionListener(new ActionListener() {
 
             @Override
@@ -95,7 +95,7 @@ public class BoarView extends JFrame implements ActionListener {
     }
 
     public static void main(String[] args) {
-        BoarView game = new BoarView();
+        new BoarView();
     }
 
     @Override
