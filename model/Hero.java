@@ -18,7 +18,6 @@ public class Hero extends JLabel{
 
 
 	}
-
 	public void moveBack() {
 		if (this.getY() < 390) {
 			this.setLocation(this.getX(), this.getY() + 64);

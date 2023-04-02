@@ -48,6 +48,7 @@ public class HeroView extends JFrame implements ActionListener {
 
         group.add(map1);
         group.add(map2);
+        group.add(map3);
         gameName.setFont(new Font("Tahoma", Font.BOLD, 30));
         gameName.setText("CROSS GAME");
         gameName.setForeground(Color.WHITE);
@@ -115,13 +116,13 @@ public class HeroView extends JFrame implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         if (map1.isSelected()) {
-            mapSelected.setText("map 1 is selected");
+            mapSelected.setText("Bạn đang chọn nhân con Chuột");
         }
         if (map2.isSelected()) {
-            mapSelected.setText("map 2 is selected");
+            mapSelected.setText("Bạn đang chọn nhân con mèo");
         }
         if (map3.isSelected()) {
-            mapSelected.setText("map 4 is selected");
+            mapSelected.setText("Bạn đang chọn nhân con chó");
         }
     }
 }
