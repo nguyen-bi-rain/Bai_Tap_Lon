@@ -10,6 +10,8 @@ import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 
+
+import model.Car;
 import model.Hero;
 import utils.contants;
 
@@ -17,11 +19,13 @@ public class MapView extends JFrame {
     private JLabel score;
     private JLabel map;
     private Hero hero;
+    private Car car;
+    public MapView(){
 
+    }
     public MapView(String map1, String character) {
         hero = new Hero();
         map = new JLabel();
-
         score = new JLabel("0");
 
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -41,10 +45,16 @@ public class MapView extends JFrame {
 
         map.setIcon(new ImageIcon(getClass().getResource("../images/"+map1+".png")));
         map.setBounds(0, 0, map.getIcon().getIconWidth(), map.getIcon().getIconHeight());
+
         hero.setIcon(new ImageIcon(getClass().getResource("../images/" + character + ".png")));
         hero.setBounds(500, 550, 100, 100);
         hero.setBackground(Color.BLACK);
 
+        car.setIcon(new ImageIcon(getClass().getResource("../images/cat.png")));
+
+        
+
+        add(car);
         add(hero);
         add(map);
         setLocationRelativeTo(null);
@@ -52,5 +62,9 @@ public class MapView extends JFrame {
         setResizable(true);
         setVisible(true);
     }
-
+    public static void main(String[] args) {
+        MapView map = new MapView("Mountain", "cat");
+        
+    }
+    
 }

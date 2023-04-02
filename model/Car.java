@@ -1,19 +1,16 @@
 package model;
 
-import java.util.concurrent.ThreadFactory;
 
+
+import javax.swing.ImageIcon;
 import javax.swing.JLabel; 
 
-public class Car extends JLabel implements ThreadFactory{
-
-    @Override
-    public Thread newThread(Runnable r) {
-            
-        return new Thread();
-    }
-    public static void main(String[] args) {
+public class Car extends JLabel{
+    public Car(int x,int y,int W,int H,String fileName){
+        setBounds(x,y,W,H);
+        setIcon(new ImageIcon(getClass().getResource(fileName)));
         
-
     }
-
+    
+    
 }
